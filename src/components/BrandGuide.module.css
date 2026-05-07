@@ -1,0 +1,402 @@
+/* =========================================================================
+   ESTRUTURA GERAL E AÇÕES
+   ========================================================================= */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  font-family: var(--font-body, system-ui, sans-serif);
+}
+
+.actionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+}
+
+.actionHeader h2 {
+  font-size: 1.25rem;
+  color: #fff;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.downloadPdfBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fff;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.downloadPdfBtn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.downloadPdfBtn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* =========================================================================
+   MOTOR WEB (BENTO BOX EDITORIAL DARK)
+   ========================================================================= */
+.webLayout {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  color: #fafafa;
+}
+
+.bentoItem {
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 4px;
+}
+
+/* Colunas (Grid 12) */
+.col12 { grid-column: span 12; }
+.col8  { grid-column: span 8; }
+.col6  { grid-column: span 6; }
+.col4  { grid-column: span 4; }
+
+.bentoHeader {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bentoHeader::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.heroTitle {
+  font-size: 6rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.heroTagline {
+  font-size: 1.5rem;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.bodyText {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.metricBlock {
+  margin-bottom: 1.5rem;
+}
+
+.metricLabel {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand-primary);
+  margin-bottom: 0.5rem;
+}
+
+.metricValue {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Sistema Cromático */
+.colorGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.colorSwatch {
+  height: 120px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.colorName {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  display: block;
+}
+
+.colorHex {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Listas */
+.wireList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wireList li {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.pillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pill {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* =========================================================================
+   MOTORES INVISÍVEIS PARA EXPORTAÇÃO
+   ========================================================================= */
+.pdfEngineHidden {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 1920px;
+  pointer-events: none;
+}
+
+.storyEngineHidden {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 1080px;
+  pointer-events: none;
+}
+
+/* =========================================================================
+   O MOTOR PDF (1920x1080)
+   ========================================================================= */
+.pdfPage {
+  width: 1920px;
+  height: 1080px;
+  background-color: #0a0a0a;
+  color: #fafafa;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.pdfInner {
+  margin: 80px;
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pdfHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 30px;
+  margin-bottom: 60px;
+}
+
+.pdfPageNum {
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  color: var(--brand-primary);
+}
+
+.pdfDocType {
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.pdfTitle {
+  font-size: 100px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.pdfText {
+  font-size: 32px;
+  line-height: 1.5;
+  opacity: 0.8;
+  max-width: 1200px;
+}
+
+.pdfMetricBlock {
+  margin-top: 40px;
+}
+
+.pdfMetricLabel {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--brand-primary);
+  margin-bottom: 15px;
+}
+
+.pdfMetricValue {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.pdfGrid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  flex: 1;
+}
+
+.pdfGrid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+}
+
+.pdfColorSwatch {
+  height: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.pdfColorInfo {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pdfPill {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0 15px 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pdfLogoStage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pdfLogoStage img {
+  max-width: 600px;
+  max-height: 600px;
+}
+
+/* =========================================================================
+   O MOTOR STORIES (1080x1920)
+   ========================================================================= */
+.storyPage {
+  width: 1080px;
+  height: 1920px;
+  background-color: #0a0a0a;
+  color: #fafafa;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.1); /* para html2canvas não se perder */
+}
+
+.storyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  z-index: 10;
+}
+
+.storyTitle {
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--brand-primary);
+}
+
+.storyText {
+  font-size: 80px;
+  line-height: 1.2;
+  max-width: 900px;
+}
+
+.storyWatermark {
+  position: absolute;
+  bottom: 80px;
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.3;
+}
+
+@media (max-width: 1024px) {
+  .col8, .col6, .col4 { grid-column: span 12; }
+  .heroTitle { font-size: 4rem; }
+}

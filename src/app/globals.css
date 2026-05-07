@@ -1,26 +1,78 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Estética Editorial Vintage */
+  --bg-primary: #F6F1E9; /* Creme / Papel Antigo */
+  --bg-secondary: #EBE4D8; /* Creme mais escuro para destaque */
+  
+  --text-primary: #1A1A1A; /* Preto Nanquim */
+  --text-secondary: #555555;
+  
+  --accent-primary: #E26155; /* Laranja/Terracota exigido */
+  
+  --border-subtle: #1A1A1A; /* Bordas retas e pretas (Wireframe style) */
+  --border-focus: #E26155;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Aplicar fonte Cooper nos títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cooper), serif;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Base Form Elements */
+input, textarea, button, select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* Utility for vintage editorial panels */
+.glass-panel {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0; /* Bordas retas! */
+  position: relative;
+}
+
+.glass-panel::after {
+  /* Efeito de sombra dura/offset tipo pôster antigo */
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: -6px;
+  bottom: -6px;
+  background: var(--text-primary);
+  z-index: -1;
 }
