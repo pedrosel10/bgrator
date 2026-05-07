@@ -2,6 +2,9 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/pedrosel/public_html/sygna
-    - /bin/cp -R * $DEPLOYPATH
-    - cd $DEPLOYPATH && npm install --production
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -Rfa . $DEPLOYPATH/
+    - export CI=true
+    - export NEXT_TELEMETRY_DISABLED=1
+    - cd $DEPLOYPATH && npm install
     - cd $DEPLOYPATH && npm run build
