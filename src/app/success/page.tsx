@@ -91,7 +91,7 @@ function SuccessContent() {
           }
         }
 
-        const res = await fetch("/api/verify-session", {
+        const res = await fetch("/sygna/api/verify-session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
